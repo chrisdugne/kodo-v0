@@ -153,12 +153,9 @@ stepContent = {
 		GLOBALS.savedData.requireTutorial = false
    	utils.saveTable(GLOBALS.savedData, "savedData.json")
 		displayText(6)
-	end,
-	------ Exit
-	function() 
-		hud.explode(texts[6].item)
-		hud.explode(arrows[6].item)
-	end,
+		
+		timer.performWithDelay(1600, function() hud.explode(texts[6].item) end)
+	end
 }
 
 -----------------------------------------------------------------------------------------
