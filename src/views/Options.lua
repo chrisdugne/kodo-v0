@@ -31,7 +31,7 @@ function scene:refreshScene()
 	utils.emptyGroup(optionsMenu)
 	viewManager.initView(self.view);
 
-	hud.setExit()
+	hud.setBackToHome()
    
    local top = display.newRect(optionsMenu, 0, -display.contentHeight/5, display.contentWidth, display.contentHeight/5)
    top:setFillColor(0)

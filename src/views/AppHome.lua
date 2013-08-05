@@ -44,7 +44,7 @@ function scene:intro()
 	back.x = display.viewableContentWidth/2  
 	back.y = display.viewableContentHeight/2  
 	back.alpha = 0
-	transition.to( back, { time=5000, alpha=1 })  
+	transition.to( back, { time=4000, alpha=1 })  
 	screen.back = back
 
    light1()
@@ -53,7 +53,7 @@ function scene:intro()
    
       timer.performWithDelay(2500, function()
       	light2()
-         displayIntroText("Kodo", display.contentWidth/2, 45, false)
+         displayIntroText("Kodo !", display.contentWidth/2, 45, false)
 
          timer.performWithDelay(2000, function()
          	utils.emptyGroup(screen)
@@ -69,6 +69,7 @@ end
 function scene:refreshScene()
 	utils.emptyGroup(menu)
 	viewManager.initView(self.view);
+	viewManager.initBack()
 	
 	title = display.newText( "Kodo !", 0, 0, FONT, 45 )
 	title:setTextColor( 255 )	
@@ -93,6 +94,9 @@ function scene:refreshScene()
 	playIcon:scale(0.7,0.7)
 	playIcon.x = display.contentWidth/2 + 5
 	playIcon.y = display.contentHeight/2
+	playIcon.alpha = 0
+	
+	transition.to( playIcon, { time=2000, alpha=1 }) 
 
 	---------------------------------------------------------------
 	
@@ -139,6 +143,10 @@ function scene:refreshScene()
 
 	---------------------------------------------------------------
 	
+	game.introAsteroidBuilder()
+
+	---------------------------------------------------------------
+	
 	self.view:insert(menu)
 	
    if(IOS) then
@@ -171,25 +179,25 @@ function light1()
 	explode(	
    		display.contentWidth * 0.3,
    		display.contentHeight * 0.2,
-   		2000
+   		3500
    	)
 
    explode(
    		display.contentWidth * 0.8,
    		display.contentHeight * 0.2,
-   		2500
+   		3500
    	)
 
    explode(
    		display.contentWidth * 0.1,
    		display.contentHeight * 0.4,
-   		2000
+   		3700
    	)
 
    explode(
    		display.contentWidth * 0.5,
    		display.contentHeight * 0.9,
-   		2400
+   		3200
    	)
 end
 
@@ -199,25 +207,25 @@ function light2()
 	explode(	
    		display.contentWidth * 0.5,
    		display.contentHeight * 0.6,
-   		1300
+   		3000
    	)
 
    explode(
    		display.contentWidth * 0.2,
    		display.contentHeight * 0.7,
-   		2000
+   		2800
    	)
 
    explode(
-   		display.contentWidth * 0.2,
-   		display.contentHeight * 0.7,
-   		2200
+   		display.contentWidth * 0.8,
+   		display.contentHeight * 0.2,
+   		3700
    	)
 
    explode(
    		display.contentWidth * 0.8,
    		display.contentHeight * 0.9,
-   		2300
+   		3200
    	)
 end
 
@@ -231,10 +239,10 @@ function explode(x, y, time)
    		color={{255,255,220},{255,255,120}},
    		x = x,
    		y = y,
-   		emissionNum = 11,
+   		emissionNum = 7,
    		fadeInTime = time,
    		physics={
-   			gravityY=2.5,
+   			gravityY=1.6,
    		}
    	}
    }
@@ -254,7 +262,7 @@ function displayIntroText(text, x, y, fade)
 		return
 	end
 
-	local introText = display.newText( screen, text, 0, 0, FONT, 35 )
+	local introText = display.newText( screen, text, 0, 0, FONT, 45 )
 	introText:setTextColor( 255 )	
 	introText.x = x
 	introText.y = y

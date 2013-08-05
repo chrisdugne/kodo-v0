@@ -41,6 +41,18 @@ function setExit(toApply)
 	elements:insert(exitButton)
 end
 
+function setBackToHome()
+	exitButton = display.newImage( game.scene, "assets/images/hud/exit.png")
+	exitButton.x = display.contentWidth - 20
+	exitButton.y = 45
+	exitButton.alpha = 0.5
+	exitButton:scale(0.75,0.75)
+	exitButton:addEventListener("touch", function(event)
+		router.openAppHome()
+	end)
+	elements:insert(exitButton)
+end
+
 -----------------------------------------------------------------------------------------
 
 function initTopRightText()
@@ -94,16 +106,8 @@ function initSpeedCount()
 	speedCountText:setTextColor( 255 )	
 	speedCountText:setReferencePoint( display.CenterReferencePoint )
 	
-	if(game.mode == game.CLASSIC) then
-   	speedCountText.x = display.contentWidth*0.1
-   	speedCountText.y = 20
-	elseif(game.mode == game.COMBO) then
-   	speedCountText.x = display.contentWidth*0.7
-   	speedCountText.y = 45
-	else
-   	speedCountText.x = display.contentWidth*0.2
-   	speedCountText.y = 20
-	end
+	speedCountText.x = 45
+	speedCountText.y = 20
 	
 	elements:insert(speedCountText)
 end

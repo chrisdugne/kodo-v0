@@ -10,6 +10,7 @@ scene = {}
 
 RUNNING 		= 1
 IDLE 			= 2
+INTROASTEROIDS = 3
 
 -----------------------------------------------------------------------------------------
 
@@ -20,6 +21,8 @@ TIMEATTACK 	= 3
 
 -----------------------------------------------------------------------------------------
 
+state 				= IDLE
+timePlayed			= 0
 planetFire			= nil
 planet 				= {}
 asteroids 			= {}
@@ -81,6 +84,10 @@ function init(view)
 	lock 					= false
 	level 				= 1 
 
+	---------------------------------------
+
+	stop()
+	
 	---------------------------------------
 
 	setPlanetColor(GHOST)
@@ -209,6 +216,23 @@ function asteroidBuilder()
 		end
 	end)
 end
+
+----------------------------------------
+
+function introAsteroidBuilder(auto)
+	
+	print("introAsteroidBuilder " .. state)
+	if(state ==  IDLE or (auto and state == INTROASTEROIDS)) then
+      state = INTROASTEROIDS
+		createAsteroid()
+
+   	timer.performWithDelay( 1500, function()
+			introAsteroidBuilder(true)
+   	end)
+	end
+end
+
+----------------------------------------
 
 function setPlanetColor(color)
 
@@ -646,7 +670,9 @@ end
 
 function createAsteroid()
 
-	local LEVELS = getCurrentLEVELS()
+	if(not level) then level = 1 end
+	
+	local LEVELS = CLASSIC_LEVELS
 	local nbColors = LEVELS[level].colors
 
 	local num = math.random(1,nbColors)
@@ -734,7 +760,7 @@ function stop()
 		table.remove(asteroids, 1)
 	end
 
-	planetFire:destroy("fire")
+	if(planetFire) then planetFire:destroy("fire") end
 	state	= IDLE
 end
 
@@ -767,7 +793,7 @@ function endGame(message, next)
 		end
 	else
 		-- button exit
-		router.openAppHome()
+		timer.performWithDelay(1200, function() router.openAppHome() end)
 	end
 end
 

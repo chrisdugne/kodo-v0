@@ -34,7 +34,7 @@ function scene:refreshScene()
 	position = 1
 	moving = false
 	
-	hud.setExit()
+	hud.setBackToHome()
    
    local top = display.newRect(podiums, 0, -display.contentHeight/5, display.contentWidth, display.contentHeight/5)
    top:setFillColor(0)
