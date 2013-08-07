@@ -128,7 +128,7 @@ function scene:displayContent()
 	coffeeImage:addEventListener	("touch", function(event) buy() end)
 	
 	display.remove(secondText)
-	secondText = display.newText( buyMenu, T "- Play all Levels\n- No more time limit", 0, 0, 170, 100, FONT, 14 )
+	secondText = display.newText( buyMenu, T "- No more ads", 0, 0, 170, 100, FONT, 14 )
 	secondText:setTextColor( 255 )	
 	secondText.x = buyMenu.board.x - buyMenu.board.contentWidth/2 + secondText.contentWidth + 13
 	secondText.y = buyMenu.board.y + 85
@@ -156,7 +156,7 @@ function buy()
 	display.remove(secondText)
 	viewManager.cleanupFires()
 	
-	store.purchase( { "com.uralys.thelightningplanet.1.0" } )
+	store.purchase( { "com.uralys.kodo.1.0" } )
 	
 	refreshStatus("Waiting for store...")
 

@@ -59,14 +59,22 @@ settings = {
             -- required
             publisherId = "com.coronalabs",
         },
+        -- key is the name passed to Lua's 'require()'
+        ["CoronaProvider.ads.iads"] =
+        {
+            -- required
+            publisherId = "com.coronalabs",
+        },
     },
     --]]
 	
 	-- Android permissions
 
 	androidPermissions = {
-        "com.android.vending.BILLING",
-  		"android.permission.INTERNET",
-  	},
+	      "com.android.vending.BILLING",
+	      "android.permission.INTERNET",
+	      "android.permission.ACCESS_NETWORK_STATE",
+	      "android.permission.READ_PHONE_STATE",
+	},
 	
 }

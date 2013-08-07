@@ -291,6 +291,71 @@ local translations =
     ["10th"] = {
         ["fr"] = "10e",
     },  
+
+    ["Nice !"] = {
+        ["fr"] = "Bien !"
+    },  
+
+    ["1mn ! Great !"] = {
+        ["fr"] = "1mn ! Bravo !",
+    },  
+
+    ["Awesome !"] = {
+        ["fr"] = "Merveilleux !",
+    },  
+
+    ["2mn ! Fantastic !"] = {
+        ["fr"] = "2mn ! Fantastique !",
+    },  
+
+    ["Excellent !"] = {
+        ["fr"] = "Excellent !",
+    },  
+
+    ["3mn ! Incredible !"] = {
+        ["fr"] = "3mn ! Incroyable !",
+    },  
+
+    ["Unstoppable !"] = {
+        ["fr"] = "Inarrêtable !",
+    },  
+
+    ["4mn ! Godlike !"] = {
+        ["fr"] = "4mn ! Digne de l'Olympe !",
+    },  
+
+    ["You're still here ?!"] = {
+        ["fr"] = "Toujours ici ?!",
+    },  
+
+    ["5mn ! What a game !"] = {
+        ["fr"] = "5mn ! Quelle partie !",
+    },  
+
+    ["Impossible !"] = {
+        ["fr"] = "Impossible !",
+    },  
+
+    ["6mn ?! Who are you ??"] = {
+        ["fr"] = "Mais qui êtes vous ?",
+    },  
+
+    ["Close to Chuck Norris !"] = {
+        ["fr"] = "Probablement Chuck Norris !",
+    },  
+
+    ["7mn : Definetely Chuck Norris"] = {
+        ["fr"] = "7mn : Assurement Chuck Norris",
+    },  
+
+    ["Well I can't add more to that"] = {
+        ["fr"] = "Là, je n'ai rien à ajouter",
+    },  
+
+    ["8mn...Now I'm really voiceless"] = {
+        ["fr"] = "8mn...Me voilà vraiment sans voix",
+    }  
+    
 }
 
 

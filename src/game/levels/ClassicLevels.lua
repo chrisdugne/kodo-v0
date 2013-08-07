@@ -2,11 +2,11 @@
 return {
 	{--------------------- Classic
 		colors 				= 8,
-		minDelay 			= 2700,
-		maxDelay 			= 3000,
-		changeDelaySec	 	= 10,
-		changeDelayAmount = 100,
-		minSpeed 			= 19,
-		maxSpeed 			= 21
+		minDelay 			= 3200,
+		maxDelay 			= 3600,
+		changeDelaySec	 	= 8,
+		changeDelayAmount = 150,
+		minSpeed 			= 20,
+		maxSpeed 			= 25
 	}
 }

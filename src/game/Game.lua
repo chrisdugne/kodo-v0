@@ -147,6 +147,10 @@ function start(requireAsteroidBuilder)
 	if(lock) then
 		hud.initLockElements()
 		timer.performWithDelay(1000, lockTimer)
+		
+		if(IOS or ANDROID) then
+	   	adsManager.ads.show( "banner", { x=0, y=0 } )
+	   end
 	end
 end
 
@@ -160,6 +164,8 @@ function nextPlayedSecond()
 	timePlayed = timePlayed+1
 	timer.performWithDelay(1000, nextPlayedSecond)
 	hud.refreshSpeedCount()
+
+	displayGreetings()	
 end
 
 
@@ -195,10 +201,11 @@ end
 function getSpeedDelay()
 
 	local LEVELS = getCurrentLEVELS()
-	local timeDelay = math.floor(timePlayed/LEVELS[level].changeDelaySec) * LEVELS[level].changeDelayAmount
+	local speed = math.floor(timePlayed/LEVELS[level].changeDelaySec) 
+	local timeDelay = speed * LEVELS[level].changeDelayAmount
 	
-	if(LEVELS[level].minDelay - timeDelay) < 149 then
-		timeDelay = LEVELS[level].minDelay - 149
+	if(LEVELS[level].minDelay - timeDelay) < 501 then
+		timeDelay = LEVELS[level].minDelay - 501
 	end
 
 	return timeDelay
@@ -695,6 +702,8 @@ function createAsteroid()
 	local speed = math.random(LEVELS[level].minSpeed, LEVELS[level].maxSpeed)/100
 	local speedOffset = math.floor(timePlayed/LEVELS[level].changeDelaySec)/100
 
+	print("speed : " .. (speed + speedOffset))
+
 	asteroidDirection = vector2D:Sub(planetCenterPoint, asteroidPoint)
 	asteroidDirection:mult(speed + speedOffset) 
 	asteroid:setLinearVelocity( asteroidDirection.x, asteroidDirection.y )
@@ -736,20 +745,20 @@ end
 function classicOver()
 	local min,sec = utils.getMinSec(timeCombo)
 	endGame(min .. ":" .. sec)
-	checkUnlockedStuffs()
+--	checkUnlockedStuffs()
 end
 
-function checkUnlockedStuffs()
-	if(not GLOBALS.savedData.levels[1] and timeCombo > 89) then
-		displayInfo("Combo mode unlocked !")
-		GLOBALS.savedData.levels[1] = { available = true }
-		utils.saveTable(GLOBALS.savedData, "savedData.json")
-		
-		if(IOS) then
-			gameCenter.postAchievement("classic.2min")
-   	end
-	end
-end
+--function checkUnlockedStuffs()
+--	if(not GLOBALS.savedData.levels[1] and timeCombo > 89) then
+--		displayInfo("Combo mode unlocked !")
+--		GLOBALS.savedData.levels[1] = { available = true }
+--		utils.saveTable(GLOBALS.savedData, "savedData.json")
+--		
+--		if(IOS) then
+--			gameCenter.postAchievement("classic.2min")
+--   	end
+--	end
+--end
 
 ------------------------------------------------------------------------------------------
 
@@ -807,20 +816,59 @@ end
 
 -----------------------------------------------------------------------------------------
 
+function displayGreetings()
+	
+	if(timePlayed == 30) then
+		displayInfo(T "Nice !")
+	elseif(timePlayed == 60) then
+		displayInfo(T "1mn ! Great !")
+	elseif(timePlayed == 90) then
+		displayInfo(T "Awesome !")
+	elseif(timePlayed == 120) then
+		displayInfo(T "2mn ! Fantastic !")
+	elseif(timePlayed == 150) then
+		displayInfo(T "Excellent !")
+	elseif(timePlayed == 180) then
+		displayInfo(T "3mn ! Incredible !")
+	elseif(timePlayed == 210) then
+		displayInfo(T "Unstoppable !")
+	elseif(timePlayed == 240) then
+		displayInfo(T "4mn ! Godlike !")
+	elseif(timePlayed == 270) then
+		displayInfo(T "You're still here ?!")
+	elseif(timePlayed == 300) then
+		displayInfo(T "5mn ! What a game !")
+	elseif(timePlayed == 330) then
+		displayInfo(T "Impossible !")
+	elseif(timePlayed == 360) then
+		displayInfo(T "6mn ?! Who are you ??")
+	elseif(timePlayed == 390) then
+		displayInfo(T "Close to Chuck Norris")
+	elseif(timePlayed == 420) then
+		displayInfo(T "7mn : Definetely Chuck Norris")
+	elseif(timePlayed == 450) then
+		displayInfo(T "Well I can't add more to that")
+	elseif(timePlayed == 480) then
+		displayInfo(T "8mn...Now I'm really voiceless")
+	end
+end
+
+-----------------------------------------------------------------------------------------
+
 function displayInfo(message)
 
-	local text = display.newText( message, 0, 0, FONT, 15 )
+	local text = display.newText( message, 0, 0, FONT, 25 )
 	text:setTextColor( 255 )	
 	text.alpha = 0
 	text.x = display.contentWidth/2
-	text.y = display.contentHeight/3
+	text.y = display.contentHeight/4
 	scene:insert(text)
 
 	transition.to( text, { 
 		time=300, 
 		alpha=1, 
 		onComplete = function()
-			timer.performWithDelay( 2000, function ()
+			timer.performWithDelay( 800, function ()
 				transition.to( text, { time=300, alpha=0}) 
 			end) 
 		end
@@ -1036,27 +1084,7 @@ function storeRecord()
 	
 	if(IOS) then
 		if(mode == CLASSIC) then 
-			gameCenter.postScore("classic", timeCombo)
-   	end
-
-		if(mode == KAMIKAZE) then 
-   		if(level == 2) then 
-   			gameCenter.postScore("kamikaze.easy", points)
-   		elseif(level == 3) then 
-   			gameCenter.postScore("kamikaze.hard", points)
-   		elseif(level == 4) then 
-   			gameCenter.postScore("kamikaze.extreme", points)
-      	end
-   	end
-
-		if(mode == TIMEATTACK) then 
-   		if(level == 2) then 
-   			gameCenter.postScore("timeattack.easy", points)
-   		elseif(level == 3) then 
-   			gameCenter.postScore("timeattack.hard", points)
-   		elseif(level == 4) then 
-   			gameCenter.postScore("timeattack.extreme", points)
-      	end
+			gameCenter.postScore("kodo", timeCombo)
    	end
 	end
 end

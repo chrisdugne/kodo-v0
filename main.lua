@@ -4,7 +4,7 @@
 --
 -----------------------------------------------------------------------------------------
 
-APP_NAME 	= "TheLightningPlanet"
+APP_NAME 	= "Kodo"
 APP_VERSION = "1.0"
 
 -----------------------------------------------------------------------------------------
@@ -54,6 +54,7 @@ xml 				= require "src.libs.Xml"
 utils 			= require "src.libs.Utils"
 vector2D			= require "src.libs.Vector2D"
 gameCenter		= require "src.libs.GameCenter"
+adsManager		= require "src.libs.AdsManager"
 
 -----------------------------------------------------------------------------------------
 -- Translations
@@ -108,16 +109,17 @@ end
 
 ------------------------------------------
 
+if(not GLOBALS.savedData.fullGame) then
+	adsManager.init()
+end
+
+------------------------------------------
+
 musicManager.playMusic()
 
 ------------------------------------------
 
 router.openAppHome()
-
---game.mode = game.COMBO
---game.level = 40
---game.timeCombo = 12
---router.openNewRecord()
 
 -----------------------------------------------------------------------------------------
 

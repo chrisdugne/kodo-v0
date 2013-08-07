@@ -28,7 +28,7 @@ end
 
 function zoomBack(back)
 	transition.to( back, { 
-		time=133000, 
+		time=113000, 
 		x = back.x*0.4, 
 		xScale = 1.4, 
 		yScale = 1.4, 
@@ -38,7 +38,7 @@ end
 
 function unzoomBack(back)
 	transition.to( back, { 
-		time=133000, 
+		time=113000, 
 		x = back.x/0.4, 
 		xScale = 0.6, 
 		yScale = 0.6, 
