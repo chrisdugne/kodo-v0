@@ -104,7 +104,7 @@ function scene:displayContent()
 	-- Texts
 
 	display.remove(mainText)
-	mainText = display.newText( buyMenu, T "The game is locked\n Get access to the full game for a coffee's price !", 0, 0, 170, 100, FONT, 14 )
+	mainText = display.newText( buyMenu, T "The game is locked\n Remove the lock wih a dollar !", 0, 0, 170, 100, FONT, 14 )
 	mainText:setTextColor( 255 )	
 	mainText.x = buyMenu.board.x - 40
 	mainText.y = buyMenu.board.y/2 + 60
@@ -120,26 +120,26 @@ function scene:displayContent()
 	statusText = display.newText( buyMenu, "", 0, 0, FONT, 22 )
 	statusText:setTextColor( 255 )	
 	
-	display.remove(coffeeImage)
-	coffeeImage = display.newImage(buyMenu, "assets/images/hud/coffee.png")
-	coffeeImage:scale(0.40,0.40)
-	coffeeImage.x = buyMenu.board.x + 35
-	coffeeImage.y = buyMenu.board.y + 15
-	coffeeImage:addEventListener	("touch", function(event) buy() end)
+--	display.remove(coffeeImage)
+--	coffeeImage = display.newImage(buyMenu, "assets/images/hud/coffee.png")
+--	coffeeImage:scale(0.40,0.40)
+--	coffeeImage.x = buyMenu.board.x + 35
+--	coffeeImage.y = buyMenu.board.y + 15
+--	coffeeImage:addEventListener	("touch", function(event) buy() end)
 	
-	display.remove(secondText)
-	secondText = display.newText( buyMenu, T "- No more ads", 0, 0, 170, 100, FONT, 14 )
-	secondText:setTextColor( 255 )	
-	secondText.x = buyMenu.board.x - buyMenu.board.contentWidth/2 + secondText.contentWidth + 13
-	secondText.y = buyMenu.board.y + 85
+--	display.remove(secondText)
+--	secondText = display.newText( buyMenu, T "- No more ads", 0, 0, 170, 100, FONT, 14 )
+--	secondText:setTextColor( 255 )	
+--	secondText.x = buyMenu.board.x - buyMenu.board.contentWidth/2 + secondText.contentWidth + 13
+--	secondText.y = buyMenu.board.y + 85
 
 	display.remove(buyButton)
 	display.remove(textBuyButton)
-	buyButton, textBuyButton = viewManager.buildButton(buyMenu, T "Buy",	"white", 26, buyMenu.board.x - buyMenu.board.contentWidth/2 + 45, 	display.contentHeight*0.61, function() buy() end)
+	buyButton, textBuyButton = viewManager.buildButton(buyMenu, T "Buy",	"white", 26, buyMenu.board.x - buyMenu.board.contentWidth/2 + 55, 	display.contentHeight*0.61, function() buy() end)
 
 	display.remove(restoreButton)
 	display.remove(textRestoreButton)
-	restoreButton, textRestoreButton = viewManager.buildButton(buyMenu, T "Restore", "white", 20, buyMenu.board.x + buyMenu.board.contentWidth/2 - 45, 	display.contentHeight*0.61, function() restore() end)
+	restoreButton, textRestoreButton = viewManager.buildButton(buyMenu, T "Restore", "white", 20, buyMenu.board.x + buyMenu.board.contentWidth/2 - 55, 	display.contentHeight*0.61, function() restore() end)
 
 end
 

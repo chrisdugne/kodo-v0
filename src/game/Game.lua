@@ -149,7 +149,7 @@ function start(requireAsteroidBuilder)
 		timer.performWithDelay(1000, lockTimer)
 		
 		if(IOS or ANDROID) then
-	   	adsManager.ads.show( "banner", { x=0, y=0 } )
+	   	adsManager.show()
 	   end
 	end
 end
@@ -202,7 +202,7 @@ function getSpeedDelay()
 
 	local LEVELS = getCurrentLEVELS()
 	local speed = math.floor(timePlayed/LEVELS[level].changeDelaySec) 
-	local timeDelay = speed * LEVELS[level].changeDelayAmount
+	local timeDelay = speed * (LEVELS[level].changeDelayAmount - speed*1.5)
 	
 	if(LEVELS[level].minDelay - timeDelay) < 501 then
 		timeDelay = LEVELS[level].minDelay - 501
@@ -228,7 +228,6 @@ end
 
 function introAsteroidBuilder(auto)
 	
-	print("introAsteroidBuilder " .. state)
 	if(state ==  IDLE or (auto and state == INTROASTEROIDS)) then
       state = INTROASTEROIDS
 		createAsteroid()
@@ -700,9 +699,7 @@ function createAsteroid()
 	asteroid.y = asteroidPoint.y
 
 	local speed = math.random(LEVELS[level].minSpeed, LEVELS[level].maxSpeed)/100
-	local speedOffset = math.floor(timePlayed/LEVELS[level].changeDelaySec)/100
-
-	print("speed : " .. (speed + speedOffset))
+	local speedOffset = math.floor(timePlayed/LEVELS[level].changeDelaySec)/100 * 0.75
 
 	asteroidDirection = vector2D:Sub(planetCenterPoint, asteroidPoint)
 	asteroidDirection:mult(speed + speedOffset) 

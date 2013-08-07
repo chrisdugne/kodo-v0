@@ -150,8 +150,13 @@ function scene:refreshScene()
 	self.view:insert(menu)
 	
    if(IOS) then
-   	timer.performWithDelay(1000, gameCenter.init)
+   	timer.performWithDelay(600, gameCenter.init)
    end
+   
+	if(not GLOBALS.savedData.fullGame) then
+   	timer.performWithDelay(600, adsManager.init)
+	end
+   
 end
 
 ------------------------------------------

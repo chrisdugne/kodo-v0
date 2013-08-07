@@ -12,8 +12,8 @@ local translations =
         ["fr"] = "Jeu en démo",
     },
 
-    ["- Play all Levels\n- No more time limit"] = {
-        ["fr"] = "- Tous les niveaux\n- Aucune limite de temps ",
+    ["- No more ads"] = {
+        ["fr"] = "- Plus de publicité",
     },
 
     ["Cancel"] = {
@@ -52,8 +52,8 @@ local translations =
         ["fr"] = "Acheter",
     },
 
-    ["The game is locked\n Get access to the full game for a coffee's price !"] = {
-        ["fr"] = "Le jeu est en démo\n Accéder à son intégralité pour le prix d'un café !",
+    ["The game is locked\n Remove the lock wih a dollar !"] = {
+        ["fr"] = "Le jeu est en démo\n Accéder à son intégralité pour moins d'un euro !",
     },
 
     ["Tutorial"] = {

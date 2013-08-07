@@ -109,12 +109,6 @@ end
 
 ------------------------------------------
 
-if(not GLOBALS.savedData.fullGame) then
-	adsManager.init()
-end
-
-------------------------------------------
-
 musicManager.playMusic()
 
 ------------------------------------------

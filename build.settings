@@ -53,16 +53,12 @@ settings = {
     
     plugins =
     {
-        -- key is the name passed to Lua's 'require()'
         ["CoronaProvider.gameNetwork.google"] =
         {
-            -- required
             publisherId = "com.coronalabs",
         },
-        -- key is the name passed to Lua's 'require()'
         ["CoronaProvider.ads.iads"] =
         {
-            -- required
             publisherId = "com.coronalabs",
         },
     },

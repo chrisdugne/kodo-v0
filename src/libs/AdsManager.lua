@@ -9,15 +9,20 @@ local ads = require "ads"
 ---------------------------------------------------------------------
 
 function init()
-	if(IOS) then
-   	print("init iAds")
-   	ads.init( "iads", "684227637", adListener )
-   end
+--	if(IOS) then
+--   	print("init iAds")
+--   	ads.init( "iads", "com.uralys.kodo", adListener )
+--   end
+--
+--	if(ANDROID) then
+--   	print("init AdMob")
+--   	ads.init( "AdMob", "com.uralys.kodo", adListener )
+--   end
+end
 
-	if(ANDROID) then
-   	print("init AdMob")
-   	ads.init( "AdMob", "a1520200cc38c3d", adListener )
-   end
+function show()
+--	print("----------------------------         show ad")
+--	ads.show( "banner", { x=display.contentWidth/2, y=display.contentHeight - 20 } )
 end
 
 ---------------------------------------------------------------------
