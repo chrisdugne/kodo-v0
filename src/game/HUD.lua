@@ -167,21 +167,18 @@ end
 -----------------------------------------------------------------------------------------
 
 function setupPad()
-	setupButtons()
-	
-	if(game.mode ~= game.CLASSIC) then
-		setupLightningButton()
-   end
+	colorsEnabled = true
+	setup2Buttons()
+	Runtime:addEventListener("touch", function(event) screenTouch(event) end)
 end
 
 -----------------------------------------------------------------------------------------
 
-function setupButtons()
-	colorsEnabled = true
+function setup2Buttons()
 
 	ghostButton = display.newImage( game.scene, "assets/images/hud/button.".. COLORS[1] ..".png")
-	ghostButton.x = display.contentWidth - 55
-	ghostButton.y = display.contentHeight - 30
+	ghostButton.x = 25
+	ghostButton.y = display.contentHeight - 70
 	ghostButton:scale(0.15,0.15)
 	ghostButton:addEventListener("touch", function(event) touch(event, ghostButton) color(event, COLORS[1]) end)
 	elements:insert(ghostButton)
@@ -192,50 +189,63 @@ function setupButtons()
 	octopusButton:scale(0.15,0.15)
 	octopusButton:addEventListener("touch", function(event) touch(event, octopusButton) color(event, COLORS[2]) end)
 	elements:insert(octopusButton)
+	
+end
+
+function setup4Buttons()
 
 	horrorButton = display.newImage( game.scene, "assets/images/hud/button.".. COLORS[3] ..".png")
-	horrorButton.x = display.contentWidth - 85
-	horrorButton.y = display.contentHeight - 70
+	horrorButton.x = 55
+	horrorButton.y = display.contentHeight - 30
 	horrorButton:scale(0.15,0.15)
 	horrorButton:addEventListener("touch", function(event) touch(event, horrorButton) color(event, COLORS[3]) end)
 	elements:insert(horrorButton)
 
 	monsterButton = display.newImage( game.scene, "assets/images/hud/button.".. COLORS[4] ..".png")
 	monsterButton.x = display.contentWidth - 55
-	monsterButton.y = display.contentHeight - 110
+	monsterButton.y = display.contentHeight - 30
 	monsterButton:scale(0.15,0.15)
 	monsterButton:addEventListener("touch", function(event) touch(event, monsterButton) color(event, COLORS[4]) end)
 	elements:insert(monsterButton)
+	
+end
+
+function setup6Buttons()
 
 	ninjaButton = display.newImage( game.scene, "assets/images/hud/button.".. COLORS[5] ..".png")
-	ninjaButton.x = 55
-	ninjaButton.y = display.contentHeight - 30
+	ninjaButton.x = 85
+	ninjaButton.y = display.contentHeight - 70
 	ninjaButton:scale(0.15,0.15)
 	ninjaButton:addEventListener("touch", function(event) touch(event, ninjaButton) color(event, COLORS[5]) end)
 	elements:insert(ninjaButton)
 
 	skullButton = display.newImage( game.scene, "assets/images/hud/button.".. COLORS[6] ..".png")
-	skullButton.x = 25
+	skullButton.x = display.contentWidth - 85
 	skullButton.y = display.contentHeight - 70
 	skullButton:scale(0.15,0.15)
 	skullButton:addEventListener("touch", function(event) touch(event, skullButton) color(event, COLORS[6]) end)
 	elements:insert(skullButton)
+	
+end
+
+-----------------------------------------------------------------------------------------
+
+function setup8Buttons()
 
 	eyesButton = display.newImage( game.scene, "assets/images/hud/button.".. COLORS[7] ..".png")
-	eyesButton.x = 85
-	eyesButton.y = display.contentHeight - 70
+	eyesButton.x = 55
+	eyesButton.y = display.contentHeight - 110
 	eyesButton:scale(0.15,0.15)
 	eyesButton:addEventListener("touch", function(event) touch(event, eyesButton) color(event, COLORS[7]) end)
 	elements:insert(eyesButton)
 
 	blinkButton = display.newImage( game.scene, "assets/images/hud/button.".. COLORS[8] ..".png")
-	blinkButton.x = 55
+	blinkButton.x = display.contentWidth - 55
 	blinkButton.y = display.contentHeight - 110
 	blinkButton:scale(0.15,0.15)
 	blinkButton:addEventListener("touch", function(event) touch(event, blinkButton) color(event, COLORS[8]) end)
 	elements:insert(blinkButton)
 
-	Runtime:addEventListener("touch", function(event) screenTouch(event) end)
 end
 
 -----------------------------------------------------------------------------------------

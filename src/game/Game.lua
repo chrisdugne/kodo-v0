@@ -160,12 +160,13 @@ function nextPlayedSecond()
 		timePlayed = 0 
 		return
 	end
+	
 
 	timePlayed = timePlayed+1
 	timer.performWithDelay(1000, nextPlayedSecond)
 	hud.refreshSpeedCount()
 
-	displayGreetings()	
+	checkNextStep()	
 end
 
 
@@ -679,7 +680,20 @@ function createAsteroid()
 	if(not level) then level = 1 end
 	
 	local LEVELS = CLASSIC_LEVELS
-	local nbColors = LEVELS[level].colors
+	local nbColors = 2
+	
+	
+	if(state == INTROASTEROIDS) then
+		nbColors = 8
+	else
+   	if(timePlayed > 90) then
+   		nbColors = 8
+   	elseif(timePlayed > 60) then
+   		nbColors = 6
+   	elseif(timePlayed > 30) then
+   		nbColors = 4
+   	end
+	end
 
 	local num = math.random(1,nbColors)
 	local color = COLORS[num]
@@ -690,7 +704,12 @@ function createAsteroid()
 
 	local planetCenterPoint = vector2D:new(display.contentWidth/2, display.contentHeight/2)
 
-	local alpha = math.rad(math.random(360))
+	local leftOrRight = math.random(0,1)
+	local topOrBottom = math.random(1,2)
+	
+	local startAlpha = math.random(nbColors*11)
+	local alpha = math.rad( leftOrRight * 180 + (3 - 2*topOrBottom) * startAlpha )
+	
 	local distance = 300
 
 	local asteroidPoint = vector2D:new(distance*math.cos(alpha), distance*math.sin(alpha))
@@ -813,14 +832,17 @@ end
 
 -----------------------------------------------------------------------------------------
 
-function displayGreetings()
+function checkNextStep()
 	
 	if(timePlayed == 30) then
 		displayInfo(T "Nice !")
+		hud.setup4Buttons()
 	elseif(timePlayed == 60) then
 		displayInfo(T "1mn ! Great !")
+		hud.setup6Buttons()
 	elseif(timePlayed == 90) then
 		displayInfo(T "Awesome !")
+		hud.setup8Buttons()
 	elseif(timePlayed == 120) then
 		displayInfo(T "2mn ! Fantastic !")
 	elseif(timePlayed == 150) then

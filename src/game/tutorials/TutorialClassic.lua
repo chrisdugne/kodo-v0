@@ -124,7 +124,7 @@ stepContent = {
 	end,
 	------ Step 3
 	function() 
-   	hud.setupButtons()
+   	hud.setup2Buttons()
 		local asteroid = game.getAsteroid("asteroid_step2")
 		asteroid.vx, asteroid.vy = asteroid:getLinearVelocity()
 		asteroid:setLinearVelocity( 0, 0 )
@@ -286,14 +286,14 @@ arrows = {
 		way 			= "right",
 		xFrom 		= display.contentWidth /2,
 		yFrom 		= display.contentHeight - 70,
-		xTo 			= display.contentWidth - 170,
+		xTo 			= display.contentWidth - 70,
 		yTo 			= display.contentHeight - 70
 	},
 	{ --------------------------- STEP 4
 		way 			= "right",
 		xFrom 		= display.contentWidth - 170,
 		yFrom 		= display.contentHeight - 70,
-		xTo 			= display.contentWidth - 170,
+		xTo 			= display.contentWidth - 70,
 		yTo 			= display.contentHeight - 70
 	},
 	{ --------------------------- STEP 5

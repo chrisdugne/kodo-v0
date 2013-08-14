@@ -4,7 +4,7 @@ module(..., package.seeall)
 
 -----------------------------------------------------------------------------------------
 
-local mainMusic = audio.loadSound("assets/music/TheLightningPlanet.mp3")
+local mainMusic = audio.loadSound("assets/music/Kodo.mp3")
 
 local space = audio.loadSound("assets/music/space.mp3")
 local planet = {
