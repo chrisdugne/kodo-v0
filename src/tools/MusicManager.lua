@@ -46,25 +46,25 @@ end
 
 function playSpace()
 	local channel = audio.play( space )
-	audio.setVolume( 0.4, { channel=channel } )
+	audio.setVolume( 1, { channel=channel } )
 end
 
 function playPlanet()
 	local sound = math.random(1,3)
 	local channel = audio.play( planet[sound])
-	audio.setVolume( 0.3, { channel=channel} )
+	audio.setVolume( 1, { channel=channel} )
 end
 
 function playAsteroid()
 	local sound = math.random(1,3)
 	local channel = audio.play( asteroid[sound])
 	
-	audio.setVolume( 0.45, { channel=channel} )
+	audio.setVolume( 1, { channel=channel} )
 end
 
 function playLight()
 	local sound = math.random(1,4)
 	local channel = audio.play( light[sound])
 	
-	audio.setVolume( 0.25, { channel=channel} )
+	audio.setVolume( 1, { channel=channel} )
 end
