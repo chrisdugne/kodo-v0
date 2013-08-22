@@ -52,8 +52,12 @@ local translations =
         ["fr"] = "Acheter",
     },
 
-    ["The game is locked\n Remove the lock wih a dollar !"] = {
-        ["fr"] = "Le jeu est en démo\n Accéder à son intégralité pour moins d'un euro !",
+    ["Remove ads"] = {
+        ["fr"] = "Enlever la pub",
+    },
+
+    ["The game is locked\n Remove the lock and ads wih a dollar !"] = {
+        ["fr"] = "Le jeu est en démo\n Enlever la limite de temps et la pub pour moins d'un euro !",
     },
 
     ["Tutorial"] = {
@@ -242,6 +246,14 @@ local translations =
   
     ["Nice !"] = {
         ["fr"] = "Bien joué !",
+    },
+  
+    ["Go on !"] = {
+        ["fr"] = "Continuez !",
+    },
+  
+    ["Let's rock !"] = {
+        ["fr"] = "C'est parti !",
     },
   
     ["Well done ! Now you're ready to play !"] = {

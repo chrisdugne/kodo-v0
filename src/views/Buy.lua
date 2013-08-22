@@ -104,7 +104,7 @@ function scene:displayContent()
 	-- Texts
 
 	display.remove(mainText)
-	mainText = display.newText( buyMenu, T "The game is locked\n Remove the lock wih a dollar !", 0, 0, 170, 100, FONT, 14 )
+	mainText = display.newText( buyMenu, T "The game is locked\n Remove the lock and ads wih a dollar !", 0, 0, 170, 100, FONT, 14 )
 	mainText:setTextColor( 255 )	
 	mainText.x = buyMenu.board.x - 40
 	mainText.y = buyMenu.board.y/2 + 60

@@ -79,7 +79,7 @@ function scene:displayContent()
 	-----------------------------------------------------------------------------------------------
 	-- Planets
 	
-	viewManager.buildButton(scoreMenu, "", "white", 22, scoreMenu.board.x, 														display.contentHeight*0.58, function() router.openSelection() end)
+	viewManager.buildButton(scoreMenu, "", "white", 22, scoreMenu.board.x, display.contentHeight*0.58, function() router.openSelection() end)
 	
 	-----------------------------------------------------------------------------------------------
 	-- Icons

@@ -6,7 +6,7 @@ return {
 		maxDelay 			= 3600,
 		changeDelaySec	 	= 10,
 		changeDelayAmount = 120,
-		minSpeed 			= 19,
-		maxSpeed 			= 23
+		minSpeed 			= 20,
+		maxSpeed 			= 24
 	}
 }

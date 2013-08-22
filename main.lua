@@ -11,6 +11,7 @@ APP_VERSION = "1.0"
 
 IOS 		= system.getInfo( "platformName" )  == "iPhone OS"
 ANDROID 	= system.getInfo( "platformName" )  == "Android"
+SIMULATOR 	= system.getInfo( "environment" )  == "simulator"
 
 -----------------------------------------------------------------------------------------
 

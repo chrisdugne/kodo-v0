@@ -205,8 +205,8 @@ function getSpeedDelay()
 	local speed = math.floor(timePlayed/LEVELS[level].changeDelaySec) 
 	local timeDelay = speed * (LEVELS[level].changeDelayAmount - speed*1.5)
 	
-	if(LEVELS[level].minDelay - timeDelay) < 501 then
-		timeDelay = LEVELS[level].minDelay - 501
+	if(LEVELS[level].minDelay - timeDelay) < 251 then
+		timeDelay = LEVELS[level].minDelay - 251
 	end
 
 	return timeDelay
@@ -686,17 +686,21 @@ function createAsteroid()
 	if(state == INTROASTEROIDS) then
 		nbColors = 8
 	else
-   	if(timePlayed > 90) then
+   	if(timePlayed > 50) then
    		nbColors = 8
-   	elseif(timePlayed > 60) then
-   		nbColors = 6
    	elseif(timePlayed > 30) then
+   		nbColors = 6
+   	elseif(timePlayed > 10) then
    		nbColors = 4
    	end
 	end
 
 	local num = math.random(1,nbColors)
 	local color = COLORS[num]
+	
+	if(timePlayed < 7) then
+		color = COLORS[2]
+	end
 
 	local asteroid = display.newImageRect( "assets/images/game/asteroid." .. color .. ".png", 48, 48 )
 	asteroid.color = color
@@ -834,15 +838,19 @@ end
 
 function checkNextStep()
 	
-	if(timePlayed == 30) then
+	if(timePlayed == 10) then
 		displayInfo(T "Nice !")
 		hud.setup4Buttons()
+	elseif(timePlayed == 25) then
+		displayInfo(T "Go on !")
+		hud.setup6Buttons()
+	elseif(timePlayed == 50) then
+		displayInfo(T "Let's rock !")
+		hud.setup8Buttons()
 	elseif(timePlayed == 60) then
 		displayInfo(T "1mn ! Great !")
-		hud.setup6Buttons()
 	elseif(timePlayed == 90) then
 		displayInfo(T "Awesome !")
-		hud.setup8Buttons()
 	elseif(timePlayed == 120) then
 		displayInfo(T "2mn ! Fantastic !")
 	elseif(timePlayed == 150) then

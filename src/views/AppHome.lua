@@ -67,6 +67,7 @@ end
 -----------------------------------------------------------------------------------------
 
 function scene:refreshScene()
+
 	utils.emptyGroup(menu)
 	viewManager.initView(self.view);
 	viewManager.initBack()
@@ -97,6 +98,25 @@ function scene:refreshScene()
 	playIcon.alpha = 0
 	
 	transition.to( playIcon, { time=2000, alpha=1 }) 
+
+	---------------------------------------------------------------
+	
+	viewManager.buildSmallButton(
+		menu, 
+		"", 
+		"white", 
+		20,
+		30, 
+		display.contentHeight - 30, 
+		function() 
+			self:openMoreGames() 
+		end
+	)
+
+	local settingsIcon = display.newImage(menu, "assets/images/hud/plus.png")
+	settingsIcon:scale(0.22,0.22)
+	settingsIcon.x = 30 
+	settingsIcon.y = display.contentHeight - 30 
 
 	---------------------------------------------------------------
 	
@@ -143,6 +163,23 @@ function scene:refreshScene()
 
 	---------------------------------------------------------------
 	
+	if(not GLOBALS.savedData.fullGame) then
+   	local lockImage = display.newImage(menu, "assets/images/hud/lock.png")
+   	lockImage.x = 100
+   	lockImage.y = display.contentHeight - 30
+   	lockImage:scale(0.15,0.15)
+   	lockImage:addEventListener	("touch", router.openBuy)
+   	
+   	lockText = display.newText( T "Remove ads", 0, 0, FONT, 13 )
+   	lockText:setTextColor( 255 )	
+   	lockText.x = 150
+   	lockText.y = display.contentHeight - 30
+   	lockText:addEventListener	("touch", router.openBuy)
+   	menu:insert(lockText)
+   end
+	
+	---------------------------------------------------------------
+	
 	game.introAsteroidBuilder()
 
 	---------------------------------------------------------------
@@ -168,6 +205,32 @@ end
 function scene:openPodiums()
 	router.openPodiums()	
 end
+
+function scene:openMoreGames()
+	local webView = native.newWebView( 0, 0, display.contentWidth, display.contentHeight ) 
+
+   function adsListener( event ) 
+   	print(event.url)
+   	if 1 == string.find( event.url, "market://" ) then 
+   		system.openURL( event.url ) 
+   		webView:back() 
+   	end 
+   	if 1 == string.find( event.url, "closeappnext" ) then 
+   		webView:removeSelf() 
+   	end 
+   end 
+
+	local id
+	if(ANDROID) then
+		id = "3bd6acab-9a4d-49a2-ac3d-0244cfd6ff50"
+	else
+		id = "72c0a06b-c1a9-4872-a115-965abfb69409"
+	end
+	
+	webView:request("http://admin.appnext.com/html5Bar/mobileclosebtn.html?id="..id)
+	webView:addEventListener( "urlRequest", adsListener )
+end
+
 
 ------------------------------------------
 
@@ -289,6 +352,10 @@ end
 function scene:enterScene( event )
 	if(introComplete) then
 		self:refreshScene()
+		
+		if(not GLOBALS.savedData.fullGame) then
+			self:openMoreGames()
+   	end
 	end
 end
 
