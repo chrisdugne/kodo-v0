@@ -190,10 +190,6 @@ function scene:refreshScene()
    	timer.performWithDelay(600, gameCenter.init)
    end
    
-	if(not GLOBALS.savedData.fullGame) then
-   	timer.performWithDelay(600, adsManager.init)
-	end
-   
 end
 
 ------------------------------------------

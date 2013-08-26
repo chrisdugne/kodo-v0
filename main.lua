@@ -55,7 +55,6 @@ xml 				= require "src.libs.Xml"
 utils 			= require "src.libs.Utils"
 vector2D			= require "src.libs.Vector2D"
 gameCenter		= require "src.libs.GameCenter"
-adsManager		= require "src.libs.AdsManager"
 
 -----------------------------------------------------------------------------------------
 -- Translations
