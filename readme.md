@@ -9,7 +9,7 @@
 
 ## CBEffects
 
-I used [CBEffects](https://github.com/GymbylCoding/CBEffects) created by Caleb Place.
+Awesome particle effects provided by [CBEffects](https://github.com/GymbylCoding/CBEffects)
 
 ## About
 
